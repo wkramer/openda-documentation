@@ -139,41 +139,43 @@ The configuration of the Simplex method
 XML-example
 -----------
 
-      <parameter_calibration>
-        <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
-        <output>
-            <filename>results_oscill.m</filename> 
-           <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
-        </output>
-        <iteration maxit="60" tol="0.001">    </iteration>
-        <!-- 1st VERTEX:-->
-        <model1>
-           <modelbuild_sp>
-             <xi:include href="models/functions_oscill.xml"/>
-              <model>  
-                 <parameters avg_t_damp="8.95" avg_omega="13.5"> </parameters> 
-              </model> -->  
-           </modelbuild_sp> 
-        </model1>
-        <!-- 2nd VERTEX:-->
-        <model2>
-           <modelbuild_sp>
-             <xi:include href="models/functions_oscill.xml"/>
-              <model>  
-                 <parameters avg_t_damp="6.0" avg_omega="15.9"> </parameters> 
-              </model> -->  
-           </modelbuild_sp> 
-        </model2>
-        <!-- 3rd VERTEX:-->
-        <model3>
-           <modelbuild_sp>
-             <xi:include href="models/functions_oscill.xml"/>
-              <model>  
-                 <parameters avg_t_damp="9.0" avg_omega="12.5"> </parameters> 
-              </model> -->  
-           </modelbuild_sp> 
-        </model3>
-      </parameter_calibration>
+```xml
+   <parameter_calibration>
+      <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
+      <output>
+         <filename>results_oscill.m</filename> 
+         <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
+      </output>
+      <iteration maxit="60" tol="0.001">    </iteration>
+      <!-- 1st VERTEX:-->
+      <model1>
+         <modelbuild_sp>
+            <xi:include href="models/functions_oscill.xml"/>
+            <model>  
+               <parameters avg_t_damp="8.95" avg_omega="13.5"> </parameters> 
+            </model> -->  
+         </modelbuild_sp> 
+      </model1>
+      <!-- 2nd VERTEX:-->
+      <model2>
+         <modelbuild_sp>
+            <xi:include href="models/functions_oscill.xml"/>
+            <model>  
+               <parameters avg_t_damp="6.0" avg_omega="15.9"> </parameters> 
+            </model> -->  
+         </modelbuild_sp> 
+      </model2>
+      <!-- 3rd VERTEX:-->
+      <model3>
+         <modelbuild_sp>
+            <xi:include href="models/functions_oscill.xml"/>
+            <model>  
+               <parameters avg_t_damp="9.0" avg_omega="12.5"> </parameters> 
+            </model> -->  
+         </modelbuild_sp> 
+      </model3>
+   </parameter_calibration>
+```
 
 Parameter estimation with the Conjugate Gradients method {#sssec.conjugrad}
 ========================================================
@@ -300,31 +302,32 @@ The configuration of the CG method
 
 XML-example
 -----------
-
-      <parameter_calibration>
-        <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
-        <iteration maxit="160" tol_step="0.0001" tol_grad="0.0001">
-        </iteration>
-        <method id="1" AX="0.0" BX="0.02" delta="1E-8">
-        <!-- id=1: Fletcher-Reeves, id=2: Polak-Ribiere, id=3: Steepest-descent-->
-        </method>
-        <model>
-           <modelbuild_sp>
-           <functions>
-              <create>oscillparam_create</create>
-              <covariance>oscillparam_covar</covariance>
-              <getobsvals>oscillparam_obs</getobsvals>
-              <compute>oscillparam_compute</compute>
-           </functions>
-           <model>
-              <parameters avg_t_damp="8.5" avg_omega="12.9">
-              </parameters>
-           </model>
-           </modelbuild_sp>
-        </model>
-        <paramstd param1="3" param2="3">
-        </paramstd>
-      </parameter_calibration>
+```xml
+   <parameter_calibration>
+      <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
+      <iteration maxit="160" tol_step="0.0001" tol_grad="0.0001">
+      </iteration>
+      <method id="1" AX="0.0" BX="0.02" delta="1E-8">
+      <!-- id=1: Fletcher-Reeves, id=2: Polak-Ribiere, id=3: Steepest-descent-->
+      </method>
+      <model>
+         <modelbuild_sp>
+         <functions>
+            <create>oscillparam_create</create>
+            <covariance>oscillparam_covar</covariance>
+            <getobsvals>oscillparam_obs</getobsvals>
+            <compute>oscillparam_compute</compute>
+         </functions>
+         <model>
+            <parameters avg_t_damp="8.5" avg_omega="12.9">
+            </parameters>
+         </model>
+         </modelbuild_sp>
+      </model>
+      <paramstd param1="3" param2="3">
+      </paramstd>
+   </parameter_calibration>
+```
 
 Parameter estimation with the LBFGS method
 ==========================================
@@ -410,22 +413,24 @@ $nstore$, which is the number of vectors $s_i$ and $y_i$ to store.
 XML-example
 -----------
 
-      <parameter_calibration>
-        <!-- Simulatie timespan en stapgrootte via CTA_Time -->
-        <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
-        <output>
-            <filename>results_oscill.m</filename> 
-           <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
-        </output>
-        <iteration maxit="10" maxln="20" tol_step="0.0001" tol_grad="0.0002">
-        </iteration>
-        <method nstore="3" c1="1E-4" c2="0.5" delta="1E-8">
+```xml
+   <parameter_calibration>
+      <!-- Simulatie timespan en stapgrootte via CTA_Time -->
+      <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
+      <output>
+         <filename>results_oscill.m</filename> 
+         <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
+      </output>
+      <iteration maxit="10" maxln="20" tol_step="0.0001" tol_grad="0.0002">
+      </iteration>
+      <method nstore="3" c1="1E-4" c2="0.5" delta="1E-8">
 
-        </method>
-           <model>
-             <xi:include href="models/lorenz_sp.xml"/>
-           </model>
-      </parameter_calibration>
+      </method>
+         <model>
+            <xi:include href="models/lorenz_sp.xml"/>
+         </model>
+   </parameter_calibration>
+```
 
 Parameter estimation with Dud
 =============================
